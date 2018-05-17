@@ -9,13 +9,13 @@ from multiprocessing import Pool
 from scipy.io import loadmat, savemat
 from utils.config_name_creator import create_time_data_name
 
-
+# to list the file names
 def get_files_paths(directory, extension='.mat'):
     filenames = sorted(os.listdir(directory))
     files_with_extension = [directory + '/' + f for f in filenames if f.endswith(extension) and not f.startswith('.')]
     return files_with_extension
 
-
+# filter signal
 def filter(x, new_sampling_frequency, data_length_sec, lowcut, highcut):
     x1 = scipy.signal.resample(x, new_sampling_frequency * data_length_sec, axis=1)
 
